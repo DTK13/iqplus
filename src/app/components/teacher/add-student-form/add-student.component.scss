@@ -1,0 +1,30 @@
+@import 'src/variables.scss';
+$form-padding:0px 25px 0px 25px;
+$full-width:100%;
+
+
+.jumbotron {
+  padding-top:25px;
+  background-color:$white;
+  border: 5px solid $salmon-2;
+  box-shadow:10px 10px 10px;
+}
+
+.col-12 .center {
+  text-align: center;
+}
+mat-error {
+  width:$full-width;
+  padding:$form-padding;
+}
+mat-form-field {
+  width:$full-width;
+  padding:$form-padding;
+  font-size:18px;
+
+}
+
+.mat-raised-button.mat-primary{
+  font-size:24px;
+  color:$white;
+}

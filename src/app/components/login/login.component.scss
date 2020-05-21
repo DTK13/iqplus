@@ -1,0 +1,60 @@
+@import 'src/variables.scss';
+
+.jumbotron {
+  background-image: url("/assets/mainLogo.jpeg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: $salmon-2;
+  text-align: center;
+  height:75%;
+  font-size:32px;
+  border: 10px solid $salmon-2;
+  border-radius:10px;
+}
+
+.jumbotron img {
+  width:30%;
+}
+
+mat-form-field {
+  width:60%;
+  margin-left:35%;
+
+}
+
+.mat-raised-button.mat-primary{
+  font-size:32px;
+  width:5em;
+  height:2em;
+  color:$white;
+}
+ .mat-raised-button.mat-accent{
+  font-size:32px;
+  width:5em;
+  height:2em;
+  color:$white;
+}
+
+
+@media only screen and (max-width: 1402px) {
+  .jumbotron {
+    background-image: none;
+    background-repeat: no-repeat;
+    background-size:none;
+    background-color: $salmon-2;
+    text-align: center;
+    height:50%;
+    font-size:32px;
+    border: 10px solid $salmon-2;
+    border-radius:40px;
+  }
+
+  mat-form-field{
+    width:100%;
+    margin-left:0%;
+  }
+
+  .mat-raised-button.mat-primary{
+    margin-left:0%;
+  }
+}
