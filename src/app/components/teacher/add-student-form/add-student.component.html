@@ -1,0 +1,98 @@
+<div class="container">
+  <h1>Add Student</h1>
+<div class="jumbotron" [formGroup]="studentForm">
+  <div *ngIf="!isDataSubmitted" class="row">
+    <div class="col-12">
+      <mat-form-field>
+        <input placeholder="First Name" matInput formControlName="firstName">
+      </mat-form-field>
+      <mat-error *ngIf="firstName.touched && firstName.hasError('required')">
+        First name is required
+      </mat-error>
+    </div>
+    <div class="col-12">
+      <mat-form-field>
+        <input placeholder="Last Name" matInput formControlName="lastName">
+      </mat-form-field>
+      <mat-error *ngIf="lastName.touched && lastName.hasError('required')">
+        Last name is required
+      </mat-error>
+    </div>
+    <div class="col-12">
+      <mat-form-field>
+        <input type="number" placeholder="Age" matInput formControlName="age">
+      </mat-form-field>
+      <mat-error *ngIf="age.touched && age.hasError('required')">
+        Age is required
+      </mat-error>
+      <mat-error *ngIf="age.touched && age.hasError('min')">
+        Minimum age is 5
+      </mat-error>
+      <mat-error *ngIf="age.touched && age.hasError('max')">
+        Maximum age is 25
+      </mat-error>
+    </div>
+    <div class="col-12">
+      <mat-form-field>
+        <mat-label>Birthday</mat-label>
+        <input matInput formControlName="dateOfBirth" [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-error *ngIf="dateOfBirth.touched && dateOfBirth.hasError('required')">
+        Birthday is required
+      </mat-error>
+    </div>
+    <div class="col-12">
+      <mat-form-field>
+        <input placeholder="Street Address" matInput formControlName="streetAddress">
+      </mat-form-field>
+      <mat-error *ngIf="streetAddress.touched && firstName.hasError('required')">
+        Street address is required
+      </mat-error>
+    </div>
+    <div class="col-12">
+      <mat-form-field>
+        <input placeholder="City" matInput formControlName="city">
+      </mat-form-field>
+      <mat-error *ngIf="city.touched && city.hasError('required')">
+        City is required
+      </mat-error>
+    </div>
+    <div class="col-12">
+      <mat-form-field>
+        <input maxlength="2" placeholder="State" matInput formControlName="state">
+      </mat-form-field>
+      <mat-error *ngIf="state.touched && state.hasError('required')">
+        State is required
+      </mat-error>
+      <mat-error *ngIf="state.touched && !stateService.isStateValid(state.value.toString())">
+        Not a valid 2 letter abbreviation for state
+      </mat-error>
+    </div>
+    <div class="col-12">
+      <mat-form-field>
+        <input placeholder="Zip Code (optional)" matInput formControlName="zipCode">
+      </mat-form-field>
+    </div>
+    <div class="col-12 center">
+      <button (click)="submitStudentForm()" [disabled]="!studentForm.valid" mat-raised-button color="primary">Submit</button>
+    </div>
+  </div>
+  <div *ngIf="isDataSubmitted" class="row">
+    <div class="col-12 center">
+      <h4>You have successfully added {{firstName.value}} {{lastName.value}}</h4> 
+    </div>
+    <div class="col-12 center">
+      <button (click)="goBack()" mat-raised-button color="accent">Done</button>
+    </div>
+    <div class="col-12 center">
+      <button (click)="addAnother()" mat-raised-button color="primary">Add Another Student</button>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+

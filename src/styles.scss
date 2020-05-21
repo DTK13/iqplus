@@ -1,0 +1,111 @@
+@import '~@angular/material/theming';
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "variables.scss";
+@include mat-core();
+$iq-plus-primary: mat-palette($mat-purple, 800);
+$iq-plus-accent: mat-palette($mat-pink, 300);
+$iq-plus-warn: mat-palette($mat-red);
+
+$iq-plus-theme: mat-light-theme($iq-plus-primary, $iq-plus-accent, $iq-plus-warn);
+
+@include angular-material-theme($iq-plus-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+
+body {
+  background-image: url(/assets/background.png);
+  background-size: cover;
+  padding-bottom:10px;
+}
+
+table {
+  background-color:$white;
+  color:$onyx;
+  border:2px solid $salmon-2;
+  text-align: center;
+}
+thead {
+  background-color: $salmon-2;
+}
+
+h1 {
+  color:$white;
+  text-align: center;
+}
+
+.container {
+  padding-top:10px;
+}
+.navbar a{
+  font-size:18px;
+  color:$salmon-2;
+}
+
+#navMenu {
+  background-image: url(/assets/mainLogo.jpeg);
+  width:auto;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+}
+img {
+  color:$salmon;
+}
+
+.card {
+  border:5px solid $onyx;
+  border-radius:10px;
+}
+
+.card-body {
+  background-color: $onyx;
+  color: $white;
+}
+.card-footer {
+  background-color: $blue;
+  color:black;
+}
+
+.logo {
+  height:250px;
+  width:250px;
+  border-radius: 25%;
+}
+
+.center {
+  padding-bottom:10px;
+  text-align: center;
+}
+
+ .master-container {
+   padding:5%;
+ }
+
+ .custom {
+   margin-left:35%;
+ }
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@media only screen and (max-width: 1402px) {
+  .card {
+    border:5px solid $salmon;
+  }
+
+  .master-container {
+    padding-top:10%;
+  }
+
+  .custom {
+    margin-left:0%;
+  }
+
+  .spacer{
+    margin-right:100%;
+  }
+
+}
+
+
