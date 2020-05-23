@@ -10,10 +10,16 @@ export class StudentService {
 
   getStudents = () => {
     return this.db.list('/students').snapshotChanges();
-  }
+  };
 
   addStudent = (studentData: Student) => {
     return this.db.list('/students').push(studentData);
+  };
 
-  }
+  updateStudent = (studentData:Student, uniqueId: string) => {
+    return this.db.list(`/students`).update(uniqueId, studentData);
+
+    
+
+  };
 }

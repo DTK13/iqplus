@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Add Student</h1>
+  <h1>{{title}}</h1>
 <div class="jumbotron" [formGroup]="studentForm">
   <div *ngIf="!isDataSubmitted" class="row">
     <div class="col-12">
@@ -76,7 +76,7 @@
       </mat-form-field>
     </div>
     <div class="col-12 center">
-      <button (click)="submitStudentForm()" [disabled]="!studentForm.valid" mat-raised-button color="primary">Submit</button>
+      <button (click)="submitStudentForm()" [disabled]="!studentForm.valid" mat-raised-button color="primary">{{buttonText}}</button>
     </div>
   </div>
   <div *ngIf="isDataSubmitted" class="row">
@@ -87,7 +87,7 @@
       <button (click)="goBack()" mat-raised-button color="accent">Done</button>
     </div>
     <div class="col-12 center">
-      <button (click)="addAnother()" mat-raised-button color="primary">Add Another Student</button>
+      <button (click)="addAnother()" mat-raised-button color="primary">Add</button>
     </div>
   </div>
 </div>
