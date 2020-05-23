@@ -44,8 +44,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     RouterModule.forRoot([
-      {path: '', component: HomePageComponent },
-      {path: 'login', component: LoginComponent },
+      {path: '', component: LoginComponent },
+      {path: 'home', component: HomePageComponent},
       {path: 'add-student', component: AddStudentComponent },
       {path: 'teacher-home', component: TeacherHomeComponent },
       {path: 'teacher-view-students', component: TeacherViewStudentsComponent}

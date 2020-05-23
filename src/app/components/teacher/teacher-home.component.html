@@ -44,7 +44,7 @@
             {{student.zipCode}}
           </td>
           <td>
-            <button class="custom-button" mat-raised-button color="primary">Edit</button>
+            <button (click)="editStudent(student, i)" class="custom-button" mat-raised-button color="primary">Edit</button>
           </td>
         </tr>
       </tbody>

@@ -26,5 +26,11 @@ mat-form-field {
 
 .mat-raised-button.mat-primary{
   font-size:24px;
+  height:2em;
+  width:5em;
+  color:$white;
+}
+.mat-raised-button.mat-accent{
+  font-size:24px;
   color:$white;
 }

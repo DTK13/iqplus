@@ -5,6 +5,13 @@
 export const environment = {
   production: false,
   firebase: {
+    apiKey: 'AIzaSyBpYNqByu9_xn71kL-_y49pKrDOLW-3LZE',
+    authDomain: 'iqplus-learning.firebaseapp.com',
+    databaseURL: 'https://iqplus-learning.firebaseio.com',
+    projectId: 'iqplus-learning',
+    storageBucket: 'iqplus-learning.appspot.com',
+    messagingSenderId: '508841474332',
+    appId: '1:508841474332:web:c7cc19b16fd8ceedf822d9'
   }
 };
 

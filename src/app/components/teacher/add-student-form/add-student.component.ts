@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { StateVerificationService } from 'src/app/services/state-verification.service';
 import { StudentService } from 'src/app/services/student.service';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
+import { Student } from 'src/app/models/student.model';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -13,6 +14,11 @@ import { Router } from '@angular/router';
 })
 export class AddStudentComponent implements OnInit {
   studentForm: FormGroup;
+  title: string;
+  @Input() student: Student;
+  @Input() buttonText: string;
+  @Input() id: number;
+
   get firstName(): FormControl {
     return this.studentForm.get('firstName') as FormControl;
   }
@@ -64,8 +70,28 @@ export class AddStudentComponent implements OnInit {
   }
 
   isDataSubmitted = false;
+  uniqueId: string;
+  ngOnInit() {
+    this.student
+      ? ((this.title = `Update Student: ${this.student.firstName} ${this.student.lastName}`),
+        (this.buttonText = 'Update'))
+      : ((this.title = 'Add Student'), (this.buttonText = 'Submit'));
 
-  ngOnInit() {}
+    if (this.student != null) {
+      this.firstName.patchValue(this.student.firstName);
+      this.lastName.patchValue(this.student.lastName);
+      this.age.patchValue(this.student.age);
+      this.dateOfBirth.patchValue(new Date(this.student.dateOfBirth as Date));
+      this.streetAddress.patchValue(this.student.streetAddress);
+      this.city.patchValue(this.student.city);
+      this.state.patchValue(this.student.state);
+      this.zipCode.patchValue(this.student.zipCode);
+      this.studentForm.updateValueAndValidity();
+    }
+    this.studentService.getStudents().subscribe((response) => {
+      this.uniqueId = response[this.id].key;
+    });
+  }
 
   goBack = () => {
     this.router.navigate(['/teacher-home']);
@@ -76,12 +102,25 @@ export class AddStudentComponent implements OnInit {
     this.studentForm.reset();
   };
   submitStudentForm = () => {
-    let birthdate = this.datePipe.transform(
-      this.studentForm.value.dateOfBirth,
-      'MM/dd/yyyy'
-    );
-    this.dateOfBirth.patchValue(birthdate);
-    this.studentService.addStudent(this.studentForm.value);
-    this.isDataSubmitted = true;
+    if (this.buttonText === 'Update') {
+      const birthDate = this.datePipe.transform(
+        this.studentForm.value.dateOfBirth,
+        'MM/dd/yyyy'
+      );
+      this.dateOfBirth.patchValue(birthDate);
+      console.log(this.studentService.updateStudent(this.studentForm.value, this.uniqueId).finally(()=>{
+        if (confirm(`Student ${this.student.firstName} ${this.student.lastName} Successfully Updated`)){
+          this.router.navigate(['teacher-home']);
+        }
+      }));
+    } else {
+      const birthDate = this.datePipe.transform(
+        this.studentForm.value.dateOfBirth,
+        'MM/dd/yyyy'
+      );
+      this.dateOfBirth.patchValue(birthDate);
+      this.studentService.addStudent(this.studentForm.value);
+      this.isDataSubmitted = true;
+    }
   };
 }
